@@ -4,8 +4,8 @@
 
 /* Start Variables */
 :root {
-    --main-color: #1A5F7A;
-    --secondary-color: #002B5B;
+    --secondary-color: #1A5F7A;
+    --main-color: #002B5B;
     --third-color: #159895;
     --fourth-color: #57C5B6;
     --gray-color: rgb(222, 222, 222);
@@ -66,11 +66,48 @@ a {
 
 /* End Global Rules */
 
+/* Start Components */
+.main-heading {
+    text-align: center;
+    margin-top: 2rem;
+}
+.main-heading h2{
+    font-size: 2.5rem;
+    position: relative;
+    margin-bottom: 4rem;
+    text-transform: uppercase;
+}
+.main-heading h2::before{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    background-color: var(--fourth-color);
+    bottom: -2rem;
+    width: 7.5rem;
+}
+.main-heading h2::after{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 1rem;
+    width: 1rem;
+    border-radius: 50%;
+    border: solid 1px var(--main-color);
+    bottom: -2.5rem;
+    background-color: white;
+}
+/* End Components */
+
 /* Start Header */
 header {
-
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 2;
 }
-
 header .container {
     display: flex;
     justify-content: space-between;
@@ -82,15 +119,18 @@ header .container::after {
     content: "";
     position: absolute;
     height: 1px;
-    background-color: var(--main-color);
+    background-color: var(--fourth-color);
     bottom: 0;
     width: calc((100% - 30px));
     left: 15px;
 }
-header .container .logo {
+header .logo {
     font-family: 'Alkatra', cursive;
     font-size: 2rem;
-    color: var(--main-color);
+    color: white;
+}
+header .logo:hover {
+    color: var(--fourth-color);
 }
 header nav {
     flex: 1;
@@ -143,3 +183,263 @@ header li a:hover {
     color: var(--main-color);
 }
 /* End Header */
+
+/* =============== Start Landing =============== */
+.landing {
+    min-height: 100vh;
+    background-image: url('./assets/plygon-back.jpg');
+    background-size: cover;
+    position: relative;
+}
+.title-background {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 50%;    
+    background-color: var(--main-color);
+}
+.title-container {
+    display: flex;
+    align-items: center;
+    height: 50vh;
+}
+
+.landing-title {
+    position: relative;
+    height: 100%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+.landing-title h2 {
+    font-size: 5rem;
+}
+.landing-title p {
+    font-size: 1.2rem;
+    color: red;
+}
+
+.landing-description {
+    margin-top: 2rem;
+}
+.landing-description p{
+    color: var(--main-color);
+    font-size: 1.3rem;
+    font-weight: 600;
+    max-width: 25%;
+}
+.landing-contact {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.cta {
+    margin: 1rem 0;
+    padding: 1rem 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    border: none;
+    color: white;
+    background-color: var(--main-color);
+    border-radius: 5px;
+}
+/* End Landing */
+
+/* =============== Start Company =============== */
+.company {
+    padding: 2rem 0;
+}
+.marque {
+    width: 100%;
+    height: 12vh;
+    overflow: hidden;
+    user-select: none;
+}
+.marque-content {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.marque-content img {
+    height: 8vh;
+}
+/* End Company */
+
+/* =============== Start Services =============== */
+.services {
+    padding: 3rem 0;
+}
+@media (min-width: 768px) {
+    .services .services-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+        column-gap: 3rem;
+        row-gap: 4rem;
+    }
+}
+.services .srv-box {
+    padding: 1rem;
+    display: flex;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+.services .srv-box i {
+    margin-right: 3rem;
+}
+@media (max-width: 768px) {
+    .services .srv-box {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .services .srv-box i {
+        margin: 0 0 1.5rem;
+    }
+}
+.services .srv-box h3 {
+    margin-bottom: 1rem;
+    color: var(--main-color);
+}
+.services .srv-box p {
+    line-height: 2;
+    color: #777;
+}
+/* End Services */
+
+/* =============== Start Portfolio =============== */
+.portfolio {
+    padding: 4rem 0;
+    background-color: #002B5B;
+    color: white;
+}
+.portfolio .shuffle {
+    display: flex;
+    justify-content: center;
+}
+.portfolio .shuffle li {
+    padding: .8rem;
+}
+.portfolio .imgs-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+}
+.portfolio .imgs-container .box {
+    position: relative;
+    overflow: hidden;
+}
+.portfolio .imgs-container .box:hover .caption {
+    bottom: 0;
+}
+.portfolio .imgs-container .box:hover img {
+    transform: rotate(2deg) scale(1.1);
+}
+@media (min-width: 768px) {
+    .portfolio .imgs-container .box {
+        flex-basis: 49.5%;
+    }
+}
+@media (min-width: 1199px) {
+    .portfolio .imgs-container .box {
+        flex-basis: 24.5%;
+    }
+}
+.portfolio .imgs-container .box img{
+    max-width: 100%;
+    transition: 0.3s;
+}
+.portfolio .imgs-container .box .caption{
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    padding: 1.5rem;
+    background-color: white;
+    width: 100%;
+    transform: 0.3%;
+}
+.portfolio .imgs-container .box .caption h4{
+    font-weight: normal;
+    margin-bottom: .7rem;
+    color: var(--secondary-color);
+}
+.portfolio .imgs-container .box .caption p{
+    color: black;
+}
+.portfolio .more {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: .8rem 1.5rem;
+    border-radius: .3rem;
+    display: block;
+    width: fit-content;
+    margin: 2rem auto;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+/* End Portfolio */
+
+/* =============== Start About us =============== */
+.about {
+    padding-top: 2rem;
+    overflow: hidden;
+    height: 40rem;
+}
+.about-img {
+    height: 30rem;
+    object-position: bottom;
+}
+.about-stats {
+    margin: 5rem auto;
+    text-align: center;
+}
+.about-stats .container{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+.about-stats .container .box{
+    color: var(--main-color);
+    padding: 3rem;
+    background-color: #15989676 ;
+}
+@media (max-width: 768px) {
+    .about-stats .container .box {
+        flex-basis: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .about-stats .container .box {
+        flex-basis: 50%;
+    }
+}
+@media (min-width: 992px) {
+    .about-stats .container .box {
+        flex-basis: 25%;
+    }
+}
+
+.about-stats .container .box i{
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    color: white;
+    background-color: var(--main-color);
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto 0;
+}
+.about-stats .container .box .number{
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0 0 1.5rem;
+}
+.about-stats .container .box p{
+    color: black;
+}
+/* End About us */
